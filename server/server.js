@@ -2,6 +2,8 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const express = require('express')
 const mongoose = require('mongoose')
+const publicRoutes = require('./routes/publicRoutes')
+
 
 // express app
 const app = express()
@@ -15,6 +17,9 @@ app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
+
+//routes
+app.use('/api', publicRoutes)
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
