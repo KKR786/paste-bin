@@ -6,11 +6,11 @@ import Home from "./views/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./views/Profile";
+import Navbar from "./components/Navbar";
 
 function PrivateRoute({ slug, setRedirectTo }) {
   const { user } = useAuthContext();
   useEffect(() => {
-    // Set the redirectTo state when the user is not authenticated
     if (!user) {
       setRedirectTo(slug);
     }
@@ -30,6 +30,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={!user ? <PrivateRoute slug='/profile' setRedirectTo={updateRedirectTo}/> : <Profile />} />

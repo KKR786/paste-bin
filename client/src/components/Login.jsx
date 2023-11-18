@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../customHooks/useLogin";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,15 +13,14 @@ const Login = () => {
     e.preventDefault();
 
     await login(email, password);
-    
+
   };
 
   return (
     <>
-    <div className="login-block text-center">
-      <div className="login-block-end d-flex align-items-center justify-content-center">
+    <div className="login-block">
         <div className="login-box">
-          <h1 className="text-center mb-3">Login</h1>
+          {/* <h1 className="mb-3">Login</h1> */}
           <form onSubmit={handleSubmit}>
             <div className="login-group">
               <label>Email:</label>
@@ -46,9 +46,9 @@ const Login = () => {
             </div>
             {error && <div className="error">{error}</div>}
           </form>
+          <Link to='/signup' className="signup btn mt-3">Create new account</Link>
         </div>
       </div>
-    </div>
       <div className="copyright text-center">All copyrights reserved</div>
       </>
   );
