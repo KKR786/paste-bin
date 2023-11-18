@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useRegister } from "../hooks/useRegister"
+import { useRegister } from "../customHooks/useRegister"
 
 const Signup = () => {
   const [name, setName] = useState('')

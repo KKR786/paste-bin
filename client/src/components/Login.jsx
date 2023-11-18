@@ -12,6 +12,7 @@ const Login = () => {
     e.preventDefault();
 
     await login(email, password);
+    
   };
 
   return (
@@ -38,7 +39,7 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="submit " >
+            <div className="submit" >
               <button className="btn btn-primary w-100" disabled={isLoading}>
                 Login
               </button>
