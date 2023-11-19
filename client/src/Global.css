@@ -9,6 +9,9 @@ body {
 a {
   text-decoration: none;
 }
+ul {
+  list-style: none;
+}
 input,
 textarea {
     padding: 10px;
@@ -24,10 +27,10 @@ textarea:focus {
     box-shadow: 0 5px 5px 0 #00000010;
 }
 .mb-3 {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .mt-3 {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 .header {
   position: sticky;
@@ -101,9 +104,10 @@ textarea:focus {
 }
 
 .submit button {
-  font-size: 16px;
-  background-color: #66afe9;
+  background-color: #1877f2;
   transition: background-color 0.3s ease;
+  color: #fff;
+  border-color: #1877f2;
 }
 .btn {
   padding: 10px;
@@ -127,4 +131,38 @@ textarea:focus {
 .signup.btn:hover {
   background-color: #36a420;
   border-color: #36a420;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 50px;
+  padding: 40px;
+}
+.left textarea {
+  overflow: hidden;
+    overflow-wrap: break-word;
+    font-size: 14px;
+    min-height: 200px;
+    line-height: 21px;
+    padding: 10px;
+    resize: none;
+}
+.optional {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.optional h3, .right h3 {
+  border-bottom: 1px dashed #d4d9de;
+  padding-bottom: 10px;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.right {
+  border-left: 1px dotted #d4d9de;
+  padding-left: 15px;
 }
