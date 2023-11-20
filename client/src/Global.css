@@ -158,7 +158,8 @@ textarea:focus {
   padding-bottom: 10px;
 }
 .input-group {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
   gap: 15px;
 }
