@@ -14,34 +14,40 @@ const Signup = () => {
   }
 
   return (
-    <div className="signup-box mt-5">
+    <div className="signup-block">
+    <div className="signup-box">
     <form className="signup" onSubmit={handleSubmit}>
-      <h3 className="text-center">Create New Account</h3>
-      
+      <div className="signup-group">
       <label>Name:</label>
       <input 
         type="text" 
         onChange={(e) => setName(e.target.value)} 
         value={name} 
       />
+      </div>
+      <div className="signup-group">
       <label>Email address:</label>
       <input 
         type="email" 
         onChange={(e) => setEmail(e.target.value)} 
         value={email} 
       />
-      <label className="mt-3">Password:</label>
+      </div>
+      <div className="signup-group">
+      <label>Password:</label>
       <input 
         type="password" 
         onChange={(e) => setPassword(e.target.value)} 
         value={password} 
       />
-      <div className="btn">
-          <button disabled={isLoading} className="register">Create an Account</button>
+      </div>
+      <div className="submit">
+          <button disabled={isLoading} className="btn">Create an Account</button>
       </div>
       {error && <div className="error">{error}</div>}
       
     </form>
+    </div>
     </div>
   )
 }

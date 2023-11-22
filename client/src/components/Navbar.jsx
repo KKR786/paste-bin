@@ -8,7 +8,7 @@ function Navbar() {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const [dropDownOpen, setDropDownOpen] = React.useState(false);
-
+console.log(!(location.pathname === '/login'))
   const toggleDropdown = () => {
     setDropDownOpen(!dropDownOpen);
   };
@@ -23,7 +23,7 @@ function Navbar() {
           <Link to="/">
             <img src="" alt="Logo" />
           </Link>
-          {(location.pathname !== "/login") && (
+          {!(location.pathname === "/login") && !user && (
             <Link className="btn" to="/login">
               Login/Register
             </Link>
@@ -37,25 +37,31 @@ function Navbar() {
             </span>
           </div>
           <div className={`dropdown-content ${dropDownOpen ? "show" : ""}`}>
-            <Link className="nav-link" to="/profile">
-              <span className="material-symbols-outlined mr-2">  
-                account_circle
-              </span>
-              My Profile
-            </Link>
-            <Link className="nav-link" to="/profile">
-              <span className="material-symbols-outlined mr-2">  
-                account_circle
-              </span>
-              My Profile
-            </Link>
-            <button
-              className="dropbtn d-flex align-items-center"
-              onClick={handleClick}
-            >
-              <span className="material-symbols-outlined mr-2">logout</span>
-              Logout
-            </button>
+            <div className="drop-item">
+                <Link className="nav-link" to="/profile">
+                <span className="material-symbols-rounded mr-2">  
+                    account_circle
+                </span>
+                My Profile
+                </Link>
+            </div>
+            <div className="drop-item">
+                <Link className="nav-link" to="/profile">
+                <span className="material-symbols-rounded mr-2">  
+                    account_circle
+                </span>
+                My Profile
+                </Link>
+            </div>
+            <div className="drop-item">
+                <button
+                className="dropbtn d-flex align-items-center"
+                onClick={handleClick}
+                >
+                <span className="material-symbols-rounded mr-2">logout</span>
+                Logout
+                </button>
+            </div>
           </div>
         </div>
         }

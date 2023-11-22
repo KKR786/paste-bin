@@ -26,6 +26,15 @@ textarea:focus {
     outline: 0;
     box-shadow: 0 5px 5px 0 #00000010;
 }
+.d-flex {
+  display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.mr-2 {
+  margin-right: 8px;
+}
 .mb-3 {
   margin-bottom: 1rem;
 }
@@ -52,14 +61,14 @@ textarea:focus {
 }
 
 /*login*/
-.login-block {
+.login-block, .signup-block {
   padding: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-box {
+.login-box, .signup-box {
   width: 450px;
   background-color: #fff;
   display: flex;
@@ -71,20 +80,22 @@ textarea:focus {
   box-shadow: 3px 5px 6px #d4d9de;
 }
 .login-box form {
-  width: 100%;
-  padding: 15px;
   border-bottom: 1px solid gray;
 }
-.login-group {
+.login-box form, .signup-box form {
+  width: 100%;
+  padding: 15px;
+}
+.login-group, .signup-group {
   position: relative;
   padding-top: 12px;
 }
 
-.login-group+.login-group {
+.login-group+.login-group, .signup-group + .signup-group {
   margin-top: 20px;
 }
 
-.login-group label {
+.login-group label, .signup-group label {
   position: absolute;
   margin-bottom: 0;
   left: 15px;
@@ -93,7 +104,7 @@ textarea:focus {
   padding: 0 10px;
 }
 
-.login-group input {
+.login-group input, .signup-group input {
   padding: 15px 25px;
   background-color: #fff;
 }
@@ -166,4 +177,64 @@ textarea:focus {
 .right {
   border-left: 1px dotted #d4d9de;
   padding-left: 15px;
+}
+.dropdown {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.drop {
+  font-size: 20px;
+}
+
+.dropbtn {
+  padding: 0.7rem 1.2rem 0.7rem 0.7rem;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  width: 100%;
+}
+
+.dropbtn:hover {
+  color: #fff;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown-content.show {
+  display: block;
+  background-color: #fff;
+  width: max-content;
+  right: 0;
+  margin-top: 15px;
+}
+.drop-item {
+  width: 100%;
+  padding: 5px 10px;
+}
+.drop-item:hover {
+  background-color: slateblue;
+}
+.drop-item + .drop-item {
+  border-top: 1px solid gray;
+}
+.dropdown-content a {
+  color: black;
+}
+
+.drop-item a:hover,
+.drop-item button:hover {
+  color: #fff;
+  background-color: transparent
+}
+.nav-link {
+  padding: 0.7rem 1.2rem 0.7rem 0.7rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }

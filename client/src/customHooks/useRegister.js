@@ -12,8 +12,7 @@ export const useRegister = () => {
 
     const response = await fetch('/api/user/registration', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${user.token}`,
-        'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, name, password })
     })
     const json = await response.json()

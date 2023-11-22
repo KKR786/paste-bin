@@ -40,7 +40,7 @@ const Login = () => {
               />
             </div>
             <div className="submit" >
-              <button className="btn btn-primary w-100" disabled={isLoading}>
+              <button className="btn" disabled={isLoading}>
                 Login
               </button>
             </div>
