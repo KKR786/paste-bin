@@ -22,6 +22,13 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  friends: [{
+    type: Number,
+    ref: 'User'
+  }],
+  notifications: [{
+    type: String
+  }],
   _id: {
     type: Number
   }
