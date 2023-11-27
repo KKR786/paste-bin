@@ -9,11 +9,11 @@ function Profile() {
         </div>
         <div className="options">
           <ul className="profile-nav">
-            <li>Personal Information</li>
-            <li>Friends</li>
-            <li>Projects</li>
-            <li>All Pastes</li>
-            <li>Account Settings</li>
+            <li><button className='btn'>Personal Information</button></li>
+            <li><button className='btn'>Friends</button></li>
+            <li><button className='btn'>Projects</button></li>
+            <li><button className='btn'>All Pastes</button></li>
+            <li><button className='btn'>Account Settings</button></li>
           </ul>
         </div>
       </div>
