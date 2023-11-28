@@ -8,7 +8,7 @@ function Navbar() {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const [dropDownOpen, setDropDownOpen] = React.useState(false);
-console.log(!(location.pathname === '/login'))
+  console.log(!(location.pathname === "/login"));
   const toggleDropdown = () => {
     setDropDownOpen(!dropDownOpen);
   };
@@ -27,44 +27,50 @@ console.log(!(location.pathname === '/login'))
             <Link className="btn" to="/login">
               Login/Register
             </Link>
-          )} 
-          {user &&
-        <div className="dropdown">
-          <div className="d-flex align-items-center drop" onClick={toggleDropdown}>
-            <span>User Name</span>
-            <span className="material-symbols-rounded">
-              arrow_drop_down
-            </span>
-          </div>
-          <div className={`dropdown-content ${dropDownOpen ? "show" : ""}`}>
-            <div className="drop-item">
-                <Link className="nav-link" to="/profile">
-                <span className="material-symbols-rounded mr-2">  
-                    account_circle
+          )}
+          {user && (
+            <div className="dropdown">
+              <span className="material-symbols-rounded">notifications</span>
+              <div
+                className="d-flex align-items-center drop"
+                onClick={toggleDropdown}
+              >
+                <span>User Name</span>
+                <span className="material-symbols-rounded">
+                  arrow_drop_down
                 </span>
-                My Profile
-                </Link>
+              </div>
+              <div className={`dropdown-content ${dropDownOpen ? "show" : ""}`}>
+                <div className="drop-item">
+                  <Link className="nav-link" to="/profile">
+                    <span className="material-symbols-rounded mr-2">
+                      account_circle
+                    </span>
+                    My Profile
+                  </Link>
+                </div>
+                <div className="drop-item">
+                  <Link className="nav-link" to="/profile">
+                    <span className="material-symbols-rounded mr-2">
+                      account_circle
+                    </span>
+                    My Profile
+                  </Link>
+                </div>
+                <div className="drop-item">
+                  <button
+                    className="dropbtn d-flex align-items-center"
+                    onClick={handleClick}
+                  >
+                    <span className="material-symbols-rounded mr-2">
+                      logout
+                    </span>
+                    Logout
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="drop-item">
-                <Link className="nav-link" to="/profile">
-                <span className="material-symbols-rounded mr-2">  
-                    account_circle
-                </span>
-                My Profile
-                </Link>
-            </div>
-            <div className="drop-item">
-                <button
-                className="dropbtn d-flex align-items-center"
-                onClick={handleClick}
-                >
-                <span className="material-symbols-rounded mr-2">logout</span>
-                Logout
-                </button>
-            </div>
-          </div>
-        </div>
-        }
+          )}
         </div>
       </div>
     </div>
