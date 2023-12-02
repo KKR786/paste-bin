@@ -4,7 +4,7 @@
   margin: 0;
 }
 body {
-  background-color: seashell;
+  background-color: lavender;
 }
 a {
   text-decoration: none;
@@ -16,7 +16,7 @@ input,
 textarea {
     padding: 10px;
     width: 100%;
-    border: 1px solid #d4d9de;
+    border: 1px solid #212121;
     border-radius: 6px;
 }
 input:focus,
@@ -40,6 +40,12 @@ textarea:focus {
 }
 .mt-3 {
   margin-top: 1rem;
+}
+.mt-5 {
+  margin-top: 3rem;
+}
+.mb-5 {
+  margin-bottom: 3rem;
 }
 .header {
   position: sticky;
@@ -121,7 +127,7 @@ textarea:focus {
   border-color: #1877f2;
 }
 .btn {
-  padding: 10px;
+  padding: 8px 10px;
   color: black;
   border: 1px solid black;
   border-radius: 4px;
@@ -165,7 +171,7 @@ textarea:focus {
   flex-direction: column;
 }
 .optional h3, .right h3 {
-  border-bottom: 1px dashed #d4d9de;
+  border-bottom: 1px dashed #212121;
   padding-bottom: 10px;
 }
 .input-group {
@@ -175,7 +181,7 @@ textarea:focus {
   gap: 15px;
 }
 .right {
-  border-left: 1px dotted #d4d9de;
+  border-left: 1px dotted #212121;
   padding-left: 15px;
 }
 .dropdown {
@@ -186,8 +192,11 @@ textarea:focus {
 }
 .dropdown span {
   cursor: pointer;
+  color: black;
 }
-
+.dropdown span:hover {
+  font-weight: bold;
+}
 .drop {
   font-size: 20px;
   cursor: pointer;
@@ -285,4 +294,19 @@ textarea:focus {
 .profile-nav .btn:hover {
   transform: translate3d(0,-6px,0);
   transition: 0.6s all ease;
+}
+
+.friends {
+  padding: 50px;
+}
+.friends .contents {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+}
+.search {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  justify-content: center;
 }

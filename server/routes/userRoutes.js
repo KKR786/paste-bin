@@ -1,11 +1,12 @@
 const express = require('express')
 
-const { createNewPaste, updatePaste, deletePaste } = require('../controllers/pasteController')
+const { updateUserProfile, updateUserPassword, getUsers } = require('../controllers/userController')
 const requireAuth = require('../middlewares/requireAuth')
+
 const router = express.Router()
 
 router.use(requireAuth)
 
-router.post('/new', createNewPaste)
-router.post('/delete', deletePaste)
-router.patch('/:id', updatePaste)
+router.get('/list', getUsers)
+
+module.exports = router

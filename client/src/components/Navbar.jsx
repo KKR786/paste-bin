@@ -8,13 +8,18 @@ function Navbar() {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const [dropDownOpen, setDropDownOpen] = React.useState(false);
-  console.log(!(location.pathname === "/login"));
+  
   const toggleDropdown = () => {
     setDropDownOpen(!dropDownOpen);
   };
+
   const handleClick = () => {
     logout();
   };
+  
+  React.useEffect(() => {
+    setDropDownOpen(false);
+  }, [location.pathname])
 
   return (
     <div className="header">
@@ -30,12 +35,24 @@ function Navbar() {
           )}
           {user && (
             <div className="dropdown">
-              <span className="material-symbols-rounded">notifications</span>
+              <Link to="/find-friend">
+                <span className="material-symbols-rounded" title="Find friends">
+                  group_add
+                </span>
+              </Link>
+              <Link to="/notifications">
+                <span
+                  className="material-symbols-rounded"
+                  title="Notifications"
+                >
+                  notifications
+                </span>
+              </Link>
               <div
                 className="d-flex align-items-center drop"
                 onClick={toggleDropdown}
               >
-                <span>User Name</span>
+                <div>User Name</div>
                 <span className="material-symbols-rounded">
                   arrow_drop_down
                 </span>

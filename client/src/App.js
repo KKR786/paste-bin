@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./views/Profile";
 import Navbar from "./components/Navbar";
+import FindFriends from "./views/FindFriends";
+import Notifications from "./views/Notifications";
 
 function PrivateRoute({ slug, setRedirectTo }) {
   const { user } = useAuthContext();
@@ -33,7 +35,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/profile" element={!user ? <PrivateRoute slug='/profile' setRedirectTo={updateRedirectTo}/> : <Profile />} />
+          <Route path="/find-friend" element={!user ? <PrivateRoute slug='/find-friend' setRedirectTo={updateRedirectTo}/> : <FindFriends />} />
+          <Route path="/notifications" element={!user ? <PrivateRoute slug='/notifications' setRedirectTo={updateRedirectTo}/> : <Notifications />} />
+
           <Route path="/login" element={!user ? <Login /> : (!redirectTo ? <Navigate to='/' /> : <Navigate to={redirectTo} />)} />
           <Route
             path="/signup"

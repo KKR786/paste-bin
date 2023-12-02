@@ -8,9 +8,15 @@ const createToken = (_id) => {
 
 //getUsers
 const getUsers = async (req, res) => {
-  const users = await User.find()
+  try {
+    const userId = req.user._id;
 
-  res.status(200).json(users)
+    const users = await User.find({ _id: { $ne: userId } });
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 // login a user

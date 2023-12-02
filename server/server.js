@@ -1,14 +1,21 @@
 require('dotenv').config()
 const bodyParser = require('body-parser')
 const express = require('express')
+const http = require('http')
 const socketIO = require('socket.io');
 const mongoose = require('mongoose')
 const publicRoutes = require('./routes/publicRoutes')
+const pasteRoutes = require('./routes/pasteRoutes')
 const userRoutes = require('./routes/userRoutes')
 
 
 // express app
 const app = express()
+
+const server = http.createServer(app);
+
+// attach Socket.IO to the HTTP server
+const io = socketIO(server);
 
 // middleware
 app.use(express.json())
@@ -46,7 +53,8 @@ io.on('connection', (socket) => {
 
 //routes
 app.use('/api', publicRoutes)
-app.use('/api/paste', userRoutes)
+app.use('/api/paste', pasteRoutes)
+app.use('/api/user', userRoutes)
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
