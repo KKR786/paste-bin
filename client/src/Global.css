@@ -32,6 +32,9 @@ textarea:focus {
 .align-items-center {
   align-items: center;
 }
+.center {
+  text-align: center;
+}
 .mr-2 {
   margin-right: 8px;
 }
@@ -40,6 +43,12 @@ textarea:focus {
 }
 .mt-3 {
   margin-top: 1rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.mt-4 {
+  margin-top: 1.5rem;
 }
 .mt-5 {
   margin-top: 3rem;
@@ -300,13 +309,47 @@ textarea:focus {
   padding: 50px;
 }
 .friends .contents {
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 30px;
   border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 .search {
   display: flex;
   align-items: center;
   column-gap: 20px;
   justify-content: center;
+}
+.friend-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 1px 1px 4px gray;
+  border-radius: 10px;
+}
+.friend-card + .friend-card {
+  margin-top: 10px;
+}
+.friend-card button {
+  padding: 10px;
+  border-radius: 50%;
+    border: none;
+    background-color: #42b72a;
+    color: #fff;
+    cursor: pointer;
+}
+.friend-card button:hover {
+  background-color: #36a420;
+}
+.friend-card button span {
+  font-size: 30px;
+}
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 20px;
 }
