@@ -63,8 +63,20 @@ const deletePaste = async(req, res) => {
     }
 }
 
+//get public pastes
+const publicPastes = async(req, res) => {
+    try {
+        const pastes = await Paste.find({ privacy: 1 } );
+    
+        res.status(200).json(pastes);
+      } catch (error) {
+        res.status(500).json({ error: "Internal Server Error" });
+      } 
+}
+
 module.exports = {
     createNewPaste,
     updatePaste,
-    deletePaste
+    deletePaste,
+    publicPastes
 }

@@ -12,9 +12,14 @@ a {
 ul {
   list-style: none;
 }
+select {
+  appearance: none;
+  cursor: pointer;
+}
 input,
-textarea {
-    padding: 10px;
+textarea,
+select {
+    padding: 10px 15px;
     width: 100%;
     border: 1px solid #212121;
     border-radius: 6px;
@@ -134,6 +139,9 @@ textarea:focus {
   transition: background-color 0.3s ease;
   color: #fff;
   border-color: #1877f2;
+}
+.pasteBtn {
+  text-align: end;
 }
 .btn {
   padding: 8px 10px;

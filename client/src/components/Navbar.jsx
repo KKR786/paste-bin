@@ -16,7 +16,7 @@ function Navbar() {
   const handleClick = () => {
     logout();
   };
-  
+
   React.useEffect(() => {
     setDropDownOpen(false);
   }, [location.pathname])
@@ -52,7 +52,7 @@ function Navbar() {
                 className="d-flex align-items-center drop"
                 onClick={toggleDropdown}
               >
-                <div>User Name</div>
+                <h4>{user.name}</h4>
                 <span className="material-symbols-rounded">
                   arrow_drop_down
                 </span>
