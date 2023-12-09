@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../customHooks/useAuthContext";
 
 function Home() {
-  const [paste, setPaste] = useState("");
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [expiration, setExpiration] = useState("");
-  const [privacy, setPrivacy] = useState("");
-  const [password, setPassword] = useState("");
+  const [paste, setPaste] = useState(
+    localStorage.getItem("Paste") !== null
+      ? JSON.parse(localStorage.getItem("Paste")).paste
+      : ""
+  );
+  const [title, setTitle] = useState(
+    localStorage.getItem("Paste") !== null
+      ? JSON.parse(localStorage.getItem("Paste")).title
+      : ""
+  );
+  const [category, setCategory] = useState(
+    localStorage.getItem("Paste") !== null
+      ? JSON.parse(localStorage.getItem("Paste")).category
+      : ""
+  );
+  const [expiration, setExpiration] = useState(
+    localStorage.getItem("Paste") !== null
+      ? JSON.parse(localStorage.getItem("Paste")).expiration
+      : ""
+  );
+  const [privacy, setPrivacy] = useState(
+    localStorage.getItem("Paste") !== null
+      ? JSON.parse(localStorage.getItem("Paste")).privacy
+      : 1
+  );
+  const [password, setPassword] = useState(
+    localStorage.getItem("Paste") !== null
+      ? JSON.parse(localStorage.getItem("Paste")).password
+      : ""
+  );
   const [success, setSuccess] = useState("");
+
+  const [publicPastes, setPublicPastes] = useState([]);
 
   const { user } = useAuthContext();
 
@@ -66,6 +92,29 @@ function Home() {
       }
     }
   };
+
+  useEffect(() => {
+    const fetchPastes = async () => {
+      const res = await fetch("/api/paste/public/list", {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+
+      const json = await res.json();
+      if (res.ok) {
+        setPublicPastes([
+          ...publicPastes,
+          ...json.map((paste) => ({
+            title: paste.title,
+            category: paste.category,
+            user_name: paste.user_id.name,
+          })),
+        ]);
+      }
+    };
+    if (user) {
+      fetchPastes();
+    }
+  }, [user]);
   return (
     <div className="home">
       <div className="left">
@@ -73,7 +122,8 @@ function Home() {
         <form onSubmit={handleSubmit}>
           <textarea
             name="paste"
-            value={
+            value={paste}
+            placeholder={
               localStorage.getItem("Paste") !== null
                 ? JSON.parse(localStorage.getItem("Paste")).paste
                 : paste
@@ -90,8 +140,9 @@ function Home() {
               <label htmlFor="title">Title:</label>
               <input
                 type="text"
+                value={title}
                 name="title"
-                value={
+                placeholder={
                   localStorage.getItem("Paste") !== null
                     ? JSON.parse(localStorage.getItem("Paste")).title
                     : title
@@ -105,7 +156,8 @@ function Home() {
               <input
                 type="text"
                 name="category"
-                value={
+                value={category}
+                placeholder={
                   localStorage.getItem("Paste") !== null
                     ? JSON.parse(localStorage.getItem("Paste")).category
                     : category
@@ -119,7 +171,8 @@ function Home() {
               <input
                 type="text"
                 name="expiration"
-                value={
+                value={expiration}
+                placeholder={
                   localStorage.getItem("Paste") !== null
                     ? JSON.parse(localStorage.getItem("Paste")).expiration
                     : expiration
@@ -132,7 +185,8 @@ function Home() {
               <label htmlFor="privacy">Privacy:</label>
               <select
                 name="privacy"
-                value={
+                value={privacy}
+                placeholder={
                   localStorage.getItem("Paste") !== null
                     ? JSON.parse(localStorage.getItem("Paste")).privacy
                     : privacy
@@ -150,6 +204,7 @@ function Home() {
               <input
                 type="password"
                 name="password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
@@ -163,9 +218,23 @@ function Home() {
       </div>
       <div className="right">
         <h3 className="mb-3">Public Pastes</h3>
-        <ul>
-          <li>Paste Name</li>
-        </ul>
+        {publicPastes.map((paste, index) => (
+          <div key={index} className="paste-card">
+            <div className="paste-card-content">
+              <span className="material-symbols-rounded">public</span>
+              <div className="paste-card-details">
+                <h4>{paste.title}</h4>
+                <div className="paste-card-info">
+                  <span>{paste.user_name}</span>
+                  <span>{paste.category}</span>
+                </div>
+              </div>
+            </div>
+            <Link to=''>
+              <span class="material-symbols-rounded">double_arrow</span>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ const Paste = require('../models/pasteModel')
 
 //create new Paste
 const createNewPaste = async(req, res) => {
-    const {paste, title, category, expiration, password, privacy} = req.body
+    const {paste, title, category, expiration, password, privacy} = req.body;
 
     let emptyFields = [];
     if(!paste) {
@@ -19,7 +19,7 @@ const createNewPaste = async(req, res) => {
         return res.status(400).json({ error: 'Please fill required fields', emptyFields })
     }
     try {
-        const user_id = req.user._id
+        const user_id = req.user._id;
         const newPaste = await Paste.create({ paste, title, category, expiration, privacy, password, user_id })
         res.status(201).json(newPaste)
       } catch (error) {
@@ -66,7 +66,7 @@ const deletePaste = async(req, res) => {
 //get public pastes
 const publicPastes = async(req, res) => {
     try {
-        const pastes = await Paste.find({ privacy: 1 } );
+        const pastes = await Paste.find({ privacy: 1 } ).populate('user_id');
     
         res.status(200).json(pastes);
       } catch (error) {

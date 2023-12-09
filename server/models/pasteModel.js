@@ -4,6 +4,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const pasteSchema = new Schema({
+  _id: {
+    type: Number
+  },
   paste: {
     type: String,
     required: true
@@ -19,14 +22,16 @@ const pasteSchema = new Schema({
     type: String
   },
   privacy: {
-    type: String,
+    type: Number,
     required: true
   },
   password: {
     type: String
   },
-  _id: {
-    type: Number
+  user_id: {
+    type: Number,
+    required: true,
+    ref: 'User'
   }
 }, {id: false, timestamps: true});
 

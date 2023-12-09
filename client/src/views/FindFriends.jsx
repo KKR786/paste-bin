@@ -98,7 +98,7 @@ function FindFriends() {
           {noUserFound && <p className="mb-4 center">No user found</p>}
           {searchList.length !== 0 && (
             <>
-              <h2 className="mb-4">Search result for {searched}</h2>
+              <h2 className="mb-4">Search result for "{searched}"</h2>
               {searchList.map((user, index) => (
                 <div key={index} className="friend-card">
                   <div className="card-content">

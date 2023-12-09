@@ -217,6 +217,9 @@ textarea:focus {
 .drop {
   font-size: 20px;
   cursor: pointer;
+  background-color: violet;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .dropbtn {
@@ -329,6 +332,36 @@ textarea:focus {
   column-gap: 20px;
   justify-content: center;
 }
+.paste-card {
+  display: flex;
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 1px 1px 4px gray;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.paste-card-content {
+  display: flex;
+  column-gap: 10px;
+}
+.paste-card h4 {
+  font-size: 20px;
+  color: maroon;
+}
+.paste-card-info {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.paste-card-info span + span {
+  border-left: 1px solid gray;
+  padding-left: 10px;
+}
+.paste-card-details {
+  row-gap: 10px;
+  display: grid;
+}
 .friend-card {
   display: flex;
   align-items: center;
@@ -338,7 +371,7 @@ textarea:focus {
   box-shadow: 1px 1px 4px gray;
   border-radius: 10px;
 }
-.friend-card + .friend-card {
+.friend-card + .friend-card, .paste-card + .paste-card {
   margin-top: 10px;
 }
 .friend-card button {
