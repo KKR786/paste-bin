@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Pastes from '../components/Pastes'
 
 function Profile() {
+  const [pastes, setPastes] = useState(false)
+
   return (
     <div className='profile'>
       <div className="left">
@@ -12,13 +15,15 @@ function Profile() {
             <li><button className='btn'>Personal Information</button></li>
             <li><button className='btn'>Friends</button></li>
             <li><button className='btn'>Projects</button></li>
-            <li><button className='btn'>All Pastes</button></li>
+            <li><button className='btn' onClick={() => setPastes(true)}>All Pastes</button></li>
             <li><button className='btn'>Account Settings</button></li>
           </ul>
         </div>
       </div>
       <div className="right">
-        User info
+        {pastes &&
+          <Pastes />
+        }
       </div>
     </div>
   )

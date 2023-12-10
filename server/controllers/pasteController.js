@@ -74,9 +74,22 @@ const publicPastes = async(req, res) => {
       } 
 }
 
+
+const userAllPastes = async(req, res) => {
+    try {
+        const user_id = req.user._id;
+        const pastes = await Paste.find({ user_id: user_id } );
+    
+        res.status(200).json(pastes);
+      } catch (error) {
+        res.status(500).json({ error: "Internal Server Error" });
+      } 
+}
+
 module.exports = {
     createNewPaste,
     updatePaste,
     deletePaste,
-    publicPastes
+    publicPastes,
+    userAllPastes
 }

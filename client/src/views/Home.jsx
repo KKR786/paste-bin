@@ -225,13 +225,13 @@ function Home() {
               <div className="paste-card-details">
                 <h4>{paste.title}</h4>
                 <div className="paste-card-info">
-                  <span>{paste.user_name}</span>
+                  <span><Link to=''>{paste.user_name}</Link></span>
                   <span>{paste.category}</span>
                 </div>
               </div>
             </div>
             <Link to=''>
-              <span class="material-symbols-rounded">double_arrow</span>
+              <span className="material-symbols-rounded">double_arrow</span>
             </Link>
           </div>
         ))}
