@@ -67,11 +67,11 @@ function Navbar() {
                   </Link>
                 </div>
                 <div className="drop-item">
-                  <Link className="nav-link" to="/profile">
+                  <Link className="nav-link" to="/forms">
                     <span className="material-symbols-rounded mr-2">
-                      account_circle
+                      new_window
                     </span>
-                    My Profile
+                    Create Form
                   </Link>
                 </div>
                 <div className="drop-item">

@@ -395,3 +395,23 @@ textarea:focus {
   justify-content: space-between;
   column-gap: 20px;
 }
+.options, .view-form {
+  width: 100%;
+  padding: 10px 20px;
+}
+.elements {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+.elements button {
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid darkgrey;
+}
+.elements button:hover {
+  background-color: darkgreen;
+  color: white;
+}

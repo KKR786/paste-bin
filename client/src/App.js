@@ -1,6 +1,6 @@
 // Import necessary modules and components
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Form } from "react-router-dom";
 import { useAuthContext } from "./customHooks/useAuthContext";
 import Home from "./views/Home";
 import Login from "./components/Login";
@@ -9,6 +9,8 @@ import Profile from "./views/Profile";
 import Navbar from "./components/Navbar";
 import FindFriends from "./views/FindFriends";
 import Notifications from "./views/Notifications";
+import Forms from "./views/Forms";
+import NewForm from "./components/NewForm";
 
 function PrivateRoute({ slug, setRedirectTo }) {
   const { user } = useAuthContext();
@@ -37,7 +39,13 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/profile" element={!user ? <PrivateRoute slug='/profile' setRedirectTo={updateRedirectTo}/> : <Profile />} />
+
+          <Route path="/forms" element={!user ? <PrivateRoute slug='/forms' setRedirectTo={updateRedirectTo}/> : <Forms />} />
+
+          <Route path="/forms/new" element={!user ? <PrivateRoute slug='/forms/new' setRedirectTo={updateRedirectTo}/> : <NewForm />} />
+
           <Route path="/find-friend" element={!user ? <PrivateRoute slug='/find-friend' setRedirectTo={updateRedirectTo}/> : <FindFriends />} />
+
           <Route path="/notifications" element={!user ? <PrivateRoute slug='/notifications' setRedirectTo={updateRedirectTo}/> : <Notifications />} />
 
           <Route path="/login" element={!user ? <Login /> : (!redirectTo ? <Navigate to='/' /> : <Navigate to={redirectTo} />)} />
